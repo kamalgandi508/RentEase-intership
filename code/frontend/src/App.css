@@ -1,0 +1,1104 @@
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+html,
+body {
+   width: 100%;
+   height: 100%;
+   background-color: #f8f9fa;
+}
+
+a {
+   color: black;
+   text-decoration: none;
+   margin-right: 20px;
+}
+
+.App {
+   display: flex;
+   flex-direction: column;
+   min-height: 100vh;
+}
+
+.content {
+   flex: 1;
+}
+
+/* Enhanced Property Cards */
+.property-card {
+   transition: transform 0.3s ease, box-shadow 0.3s ease;
+   border-radius: 12px !important;
+   overflow: hidden;
+}
+
+.property-card:hover {
+   transform: translateY(-5px);
+   box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+}
+
+.cursor-pointer {
+   cursor: pointer;
+}
+
+/* Dashboard Cards */
+.dashboard-stat-card {
+   border: none;
+   border-radius: 16px;
+   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+   color: white;
+   transition: transform 0.3s ease;
+}
+
+.dashboard-stat-card:hover {
+   transform: translateY(-2px);
+}
+
+/* Form Enhancements */
+.form-control-lg, .form-select-lg {
+   border-radius: 8px;
+   border: 2px solid #e9ecef;
+   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control-lg:focus, .form-select-lg:focus {
+   border-color: #0d6efd;
+   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.1);
+}
+
+/* Button Enhancements */
+.btn {
+   border-radius: 8px;
+   font-weight: 500;
+   transition: all 0.3s ease;
+}
+
+.btn-primary {
+   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+   border: none;
+}
+
+.btn-primary:hover {
+   background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+   transform: translateY(-1px);
+}
+
+/* Card Enhancements */
+.card {
+   border: none;
+   box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+   border-radius: 12px;
+   transition: all 0.3s ease;
+}
+
+.card:hover {
+   box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+}
+
+.card-header {
+   background: transparent;
+   border-bottom: 1px solid #f0f0f0;
+   padding: 1.25rem 1.5rem;
+   font-weight: 600;
+}
+
+/* Navigation Enhancements */
+.navbar-transparent {
+   background: #fff !important;
+   box-shadow: 0 2px 10px rgba(0,0,0,0.08) !important;
+}
+
+.navbar-brand h2 {
+   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+   background-clip: text;
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   font-weight: 700;
+}
+
+/* Navbar Link Buttons */
+.nav-link-btn {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   padding: 8px 22px;
+   border-radius: 10px;
+   font-weight: 600;
+   font-size: 0.95rem;
+   text-decoration: none !important;
+   color: #333;
+   border: 2px solid transparent;
+   background: rgba(255, 255, 255, 0.7);
+   backdrop-filter: blur(8px);
+   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+   position: relative;
+   overflow: hidden;
+   letter-spacing: 0.3px;
+}
+
+.nav-link-btn::before {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: -100%;
+   width: 100%;
+   height: 100%;
+   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+   transition: left 0.5s ease;
+}
+
+.nav-link-btn:hover::before {
+   left: 100%;
+}
+
+.nav-link-btn:hover {
+   transform: translateY(-2px);
+   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+   color: #333;
+}
+
+.nav-link-btn:active {
+   transform: translateY(0) scale(0.97);
+   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Home button */
+.nav-link-btn:not(.nav-link-login):not(.nav-link-register):not(.nav-link-logout) {
+   border-color: #e0e0e0;
+}
+
+.nav-link-btn:not(.nav-link-login):not(.nav-link-register):not(.nav-link-logout):hover {
+   border-color: #667eea;
+   color: #667eea;
+   background: rgba(102, 126, 234, 0.06);
+}
+
+/* Login button */
+.nav-link-login {
+   border-color: #667eea;
+   color: #667eea;
+}
+
+.nav-link-login:hover {
+   background: linear-gradient(135deg, #667eea, #764ba2);
+   color: #fff !important;
+   border-color: transparent;
+   box-shadow: 0 4px 18px rgba(102, 126, 234, 0.4);
+}
+
+/* Register button */
+.nav-link-register {
+   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+   color: #fff !important;
+   border-color: transparent;
+   box-shadow: 0 2px 10px rgba(102, 126, 234, 0.25);
+}
+
+.nav-link-register:hover {
+   background: linear-gradient(135deg, #5a6fd6 0%, #6a4295 100%);
+   box-shadow: 0 6px 22px rgba(102, 126, 234, 0.45);
+   color: #fff !important;
+}
+
+/* Logout button */
+.nav-link-btn.nav-link-logout {
+   background: #e74c3c !important;
+   color: #fff !important;
+   border-color: transparent !important;
+   box-shadow: none !important;
+   transition: none !important;
+   backdrop-filter: none !important;
+   transform: none !important;
+}
+
+.nav-link-btn.nav-link-logout::before {
+   display: none !important;
+}
+
+.nav-link-btn.nav-link-logout:hover {
+   background: #e74c3c !important;
+   color: #fff !important;
+   border-color: transparent !important;
+   box-shadow: none !important;
+   transform: none !important;
+}
+
+.nav-link-btn.nav-link-logout:hover::before {
+   display: none !important;
+}
+
+.nav-link-btn.nav-link-logout:active {
+   transform: none !important;
+   box-shadow: none !important;
+}
+
+/* Modern Table Styling */
+.modern-table-container {
+   border-radius: 16px !important;
+   overflow: hidden;
+   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08) !important;
+   border: 1px solid rgba(255, 255, 255, 0.2);
+   background: rgba(255, 255, 255, 0.95) !important;
+   backdrop-filter: blur(10px);
+}
+
+.modern-table-head {
+   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+.modern-table-head th {
+   color: #fff !important;
+   font-weight: 700 !important;
+   font-size: 0.85rem !important;
+   text-transform: uppercase !important;
+   letter-spacing: 0.5px !important;
+   padding: 16px !important;
+   border: none !important;
+}
+
+.modern-table-row {
+   transition: all 0.3s ease !important;
+}
+
+.modern-table-row:hover {
+   background: rgba(102, 126, 234, 0.06) !important;
+   transform: scale(1.005);
+}
+
+.modern-table-row td {
+   padding: 14px 16px !important;
+   border-bottom: 1px solid #f0f0f0 !important;
+   font-size: 0.9rem !important;
+   vertical-align: middle !important;
+}
+
+/* Modern Action Buttons */
+.btn-modern {
+   border-radius: 8px !important;
+   padding: 6px 16px !important;
+   font-weight: 600 !important;
+   font-size: 0.82rem !important;
+   letter-spacing: 0.3px !important;
+   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+   border-width: 2px !important;
+   display: inline-flex !important;
+   align-items: center !important;
+   gap: 6px !important;
+}
+
+.btn-modern:hover {
+   transform: translateY(-2px) !important;
+   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
+}
+
+.btn-modern:active {
+   transform: translateY(0) scale(0.97) !important;
+}
+
+.btn-modern-success {
+   background: transparent !important;
+   color: #28a745 !important;
+   border-color: #28a745 !important;
+}
+.btn-modern-success:hover {
+   background: #28a745 !important;
+   color: #fff !important;
+   box-shadow: 0 4px 15px rgba(40, 167, 69, 0.35) !important;
+}
+
+.btn-modern-danger {
+   background: transparent !important;
+   color: #dc3545 !important;
+   border-color: #dc3545 !important;
+}
+.btn-modern-danger:hover {
+   background: #dc3545 !important;
+   color: #fff !important;
+   box-shadow: 0 4px 15px rgba(220, 53, 69, 0.35) !important;
+}
+
+.btn-modern-info {
+   background: transparent !important;
+   color: #667eea !important;
+   border-color: #667eea !important;
+}
+.btn-modern-info:hover {
+   background: linear-gradient(135deg, #667eea, #764ba2) !important;
+   color: #fff !important;
+   border-color: transparent !important;
+   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.35) !important;
+}
+
+.btn-modern-warning {
+   background: transparent !important;
+   color: #f0ad4e !important;
+   border-color: #f0ad4e !important;
+}
+.btn-modern-warning:hover {
+   background: #f0ad4e !important;
+   color: #fff !important;
+   box-shadow: 0 4px 15px rgba(240, 173, 78, 0.35) !important;
+}
+
+.btn-modern-primary {
+   background: transparent !important;
+   color: #667eea !important;
+   border-color: #667eea !important;
+}
+.btn-modern-primary:hover {
+   background: #667eea !important;
+   color: #fff !important;
+   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.35) !important;
+}
+
+/* Modern Status Badges */
+.badge-modern {
+   padding: 6px 14px !important;
+   border-radius: 20px !important;
+   font-weight: 600 !important;
+   font-size: 0.78rem !important;
+   letter-spacing: 0.3px !important;
+   display: inline-flex !important;
+   align-items: center !important;
+   gap: 5px !important;
+}
+
+.badge-pending {
+   background: rgba(255, 193, 7, 0.15) !important;
+   color: #b8860b !important;
+   border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.badge-booked {
+   background: rgba(40, 167, 69, 0.12) !important;
+   color: #1e7e34 !important;
+   border: 1px solid rgba(40, 167, 69, 0.3);
+}
+
+.badge-cancelled {
+   background: rgba(220, 53, 69, 0.1) !important;
+   color: #c82333 !important;
+   border: 1px solid rgba(220, 53, 69, 0.3);
+}
+
+.badge-available {
+   background: rgba(40, 167, 69, 0.12) !important;
+   color: #1e7e34 !important;
+   border: 1px solid rgba(40, 167, 69, 0.3);
+}
+
+.badge-unavailable {
+   background: rgba(108, 117, 125, 0.12) !important;
+   color: #495057 !important;
+   border: 1px solid rgba(108, 117, 125, 0.3);
+}
+
+/* Section Titles */
+.section-title-modern {
+   font-size: 1.5rem;
+   font-weight: 700;
+   color: #2c3e50;
+   margin-bottom: 20px;
+   display: flex;
+   align-items: center;
+   gap: 10px;
+}
+
+/* Tabs Enhancement */
+.MuiTabs-root {
+   background: white;
+   border-radius: 12px 12px 0 0;
+   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* Login Page Glassmorphism */
+.login-page-bg {
+   min-height: 100vh;
+   background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+   background-size: 400% 400%;
+   animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+   0% { background-position: 0% 50%; }
+   50% { background-position: 100% 50%; }
+   100% { background-position: 0% 50%; }
+}
+
+.login-glass-card {
+   background: rgba(255, 255, 255, 0.15) !important;
+   backdrop-filter: blur(20px);
+   -webkit-backdrop-filter: blur(20px);
+   border: 1px solid rgba(255, 255, 255, 0.3);
+   border-radius: 24px !important;
+   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-glass-card:hover {
+   transform: translateY(-4px);
+   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+}
+
+.login-glass-card .MuiAvatar-root {
+   background: linear-gradient(135deg, #667eea, #764ba2) !important;
+   width: 56px;
+   height: 56px;
+   box-shadow: 0 4px 14px rgba(102, 126, 234, 0.4);
+}
+
+.login-glass-card h1,
+.login-glass-card .MuiTypography-h5 {
+   color: #fff !important;
+   font-weight: 700;
+   margin-top: 12px;
+   margin-bottom: 8px;
+}
+
+.login-glass-card .MuiTextField-root .MuiInputBase-root {
+   background: rgba(255, 255, 255, 0.85);
+   border-radius: 12px;
+}
+
+.login-glass-card .MuiTextField-root .MuiOutlinedInput-notchedOutline {
+   border-color: rgba(255, 255, 255, 0.4);
+   border-radius: 12px;
+}
+
+.login-glass-card .MuiTextField-root .MuiInputBase-root:hover .MuiOutlinedInput-notchedOutline {
+   border-color: rgba(255, 255, 255, 0.7);
+}
+
+.login-glass-card .MuiTextField-root .Mui-focused .MuiOutlinedInput-notchedOutline {
+   border-color: #667eea;
+}
+
+.login-glass-card .MuiButton-contained {
+   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+   border-radius: 12px;
+   padding: 12px 32px;
+   font-weight: 600;
+   font-size: 1rem;
+   text-transform: none;
+   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+   transition: all 0.3s ease;
+   width: 100% !important;
+}
+
+.login-glass-card .MuiButton-contained:hover {
+   box-shadow: 0 6px 22px rgba(102, 126, 234, 0.6);
+   transform: translateY(-2px);
+}
+
+.login-glass-card .MuiGrid-container {
+   color: rgba(255, 255, 255, 0.9);
+   margin-top: 16px;
+}
+
+.login-glass-card .MuiGrid-container a {
+   color: #fff !important;
+   font-weight: 600;
+   text-decoration: underline !important;
+}
+
+/* Modal Enhancements */
+.modal-content {
+   border: none;
+   border-radius: 16px;
+   box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+
+.modal-header {
+   border-bottom: 1px solid #f0f0f0;
+   padding: 1.5rem;
+}
+
+/* Badge Enhancements */
+.badge {
+   border-radius: 8px;
+   font-weight: 500;
+   padding: 0.5em 0.8em;
+}
+
+/* Loading Animation */
+.spinner-border {
+   width: 3rem;
+   height: 3rem;
+}
+
+/* Home Carousel Updates */
+.home-body {
+   height: 81.5vh;
+   overflow: hidden;
+   border-radius: 0 0 24px 24px;
+}
+
+.home-body .carousel {
+   max-height: 100%;
+   border-radius: 0 0 24px 24px;
+   overflow: hidden;
+}
+
+.home-body .carousel .carousel-item {
+   height: 100%;
+}
+
+.home-body .carousel .carousel-item img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   background-size: cover;
+}
+
+/* Property Content */
+.property-content {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   padding: 2rem 0;
+}
+
+.content-home {
+   position: absolute;
+   top: 30%;
+   left: 5%;
+   z-index: 10;
+}
+
+.content-home p {
+   font-size: 42px;
+   font-weight: 800;
+   color: rgb(102, 62, 9);
+   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Filter Enhancements */
+.filter-container {
+   background: white;
+   padding: 20px;
+   border-radius: 16px;
+   box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+   margin-bottom: 20px;
+}
+
+/* Image Preview Enhancements */
+.image-preview-container {
+   position: relative;
+   border-radius: 8px;
+   overflow: hidden;
+   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Notification Enhancements */
+.notification-bell {
+   position: relative;
+   transition: all 0.3s ease;
+}
+
+.notification-bell:hover {
+   transform: scale(1.1);
+}
+
+/* Responsive Enhancements */
+@media (max-width: 768px) {
+   .property-content {
+       padding: 1rem;
+   }
+   
+   .content-home p {
+       font-size: 28px;
+   }
+   
+   .card {
+       margin-bottom: 1rem;
+   }
+   
+   .navbar-brand h2 {
+       font-size: 1.5rem;
+   }
+}
+
+@media (max-width: 576px) {
+   .content-home {
+       left: 3%;
+       top: 25%;
+   }
+   
+   .content-home p {
+       font-size: 24px;
+   }
+   
+   .home-body {
+       height: 60vh;
+   }
+}
+
+/* Utility Classes */
+.bg-gradient-primary {
+   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.bg-gradient-success {
+   background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.bg-gradient-warning {
+   background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.bg-gradient-info {
+   background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.text-gradient-primary {
+   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+   background-clip: text;
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+}
+
+.glass-effect {
+   background: rgba(255, 255, 255, 0.95);
+   backdrop-filter: blur(10px);
+   -webkit-backdrop-filter: blur(10px);
+}
+
+/* Animation Classes */
+.fade-in {
+   animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+   from { opacity: 0; transform: translateY(20px); }
+   to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-up {
+   animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+   from { transform: translateY(10px); opacity: 0; }
+   to { transform: translateY(0); opacity: 1; }
+}
+
+.filter-container {
+   width: 100%;
+   height: 10vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-bottom: 10px;
+}
+
+.filter-container input,
+select {
+   border: 1px solid black;
+   padding: 10px;
+   margin: 10px;
+   border-radius: 5px;
+}
+
+.column {
+   width: 100%;
+   display: flex;
+   flex-wrap: wrap;
+}
+
+.card {
+   margin-right: 20px;
+   margin-bottom: 15px;
+}
+
+.card .card-body .card-title img {
+   width: 100%;
+   height: 150px;
+}
+
+.chat-container {
+   display: flex;
+   flex-direction: column;
+   height: 100%;
+}
+
+.chat-container h1 {
+   font-size: 22px;
+   text-align: center;
+   margin-bottom: 20px;
+}
+
+
+.message-window {
+   /* flex: 1; */
+   overflow-x: auto;
+   padding: 10px;
+   width: 100%;
+   max-height: 200px;
+   height: 100px;
+   border: 1px solid lightgray;
+   border-radius: 5px;
+}
+
+.message {
+   background-color: #f5f5f5;
+   padding: 5px;
+   margin-bottom: 10px;
+}
+
+.input-container {
+   display: flex;
+   align-items: center;
+   padding: 12px;
+}
+
+.input-container textarea {
+   width: 25px;
+   flex: 1;
+   padding: 5px;
+   margin-right: 5px;
+   border: none;
+   border-radius: 5px;
+   background-color: rgb(250, 247, 247);
+}
+
+.input-container button {
+   padding: 5px 10px;
+   color: white;
+   font-size: 12px;
+   border: none;
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
+}
+
+@media screen and (max-width: 480px) {
+   .chat-container {
+      height: auto;
+   }
+}
+
+
+/* {allProperties.some((app) => (app.jobInfo._id === property._id) && (app.status === 'applied' || app.status === 'rejected' || app.status === 'selected')) ? (
+                              <p style={{ float: 'right', color: 'grey' }} variant="warning" disabled>
+                                 Already Applied
+                              </p>
+                           ) : userLoggedIn ? (
+                              <Button
+                                 style={{ float: 'right' }}
+                                 variant="outline-warning"
+                                 onClick={() => setSelectedJobId(property._id)}
+                              >
+                                 Apply Now
+                              </Button>
+                           ) : (
+                              <Button style={{ float: 'right' }} variant="outline-warning">
+                                 <Link to={'/login'}>Buy Now</Link>
+                              </Button>
+                           )} */
+/* <Modal
+                              centered
+                              open={selectedJobId === property._id}
+                              onOk={() => setSelectedJobId(null)}
+                              onCancel={() => setSelectedJobId(null)}
+                              width={1000}
+                           >
+                              <Form onFinish={() => handleSubmit(property._id)} className='m-3'>
+                                 <h3>Job Description and Skills</h3><hr />
+                                 <div className="d-flex flex-column mt-0">
+                                    <h5>Descrption:</h5><p>{property.jobDescription}</p><br />
+                                    <h5>Skills:</h5><p>{property.skills}</p><br />
+                                 </div>
+                                 <hr style={{ height: 3, background: 'black' }} />
+                                 <h3>Enter Your Details for the Application</h3><hr />
+                                 <h5>Personal Details:</h5>
+                                 <Row gutter={20}>
+                                    <Col xs={24} md={12} lg={8}>
+                                       <Form.Item label="Full Name" required>
+                                          <Input name='name' value={details.name} onChange={handleChange} placeholder='Enter name' />
+                                       </Form.Item>
+                                    </Col>
+                                    <Col xs={24} md={12} lg={8}>
+                                       <Form.Item label="Phone" required>
+                                          <Input name='phone' value={details.phone} onChange={handleChange} type='number' placeholder='Your phone' />
+                                       </Form.Item>
+                                    </Col>
+                                    <Col xs={24} md={12} lg={8}>
+                                       <Form.Item label="Email" required>
+                                          <Input name='email' value={details.email} onChange={handleChange} type='email' placeholder='Your email' />
+                                       </Form.Item>
+                                    </Col>
+                                    <Col xs={24} md={12} lg={8}>
+                                       <Form.Item label="Address" required>
+                                          <Input name='address' value={details.address} onChange={handleChange} type='text' placeholder='Your address' />
+                                       </Form.Item>
+                                    </Col>
+                                 </Row>
+                                 <h5>Highest Educational Details:</h5>
+                                 <Row gutter={20}>
+                                    <Col xs={24} md={12} lg={8}>
+                                       <Form.Item label="University Name" required>
+                                          <Input name='universityName' value={details.universityName} onChange={handleChange} type='text' placeholder='Your university name' />
+                                       </Form.Item>
+                                    </Col>
+                                    <Col xs={24} md={12} lg={8}>
+                                       <Form.Item label="Highest Degree" required>
+                                          <Input name='degree' value={details.degree} onChange={handleChange} type='text' placeholder='Your highest degree' />
+                                       </Form.Item>
+                                    </Col>
+                                    <Col xs={24} md={12} lg={8}>
+                                       <Form.Item label="Experience" required>
+                                          <Input name='experience' value={details.experience} onChange={handleChange} type='number' placeholder='Your experience' />
+                                       </Form.Item>
+                                    </Col>
+                                 </Row>
+                                 <h5>Resume(only in Pdf Format):</h5>
+                                 <Row gutter={20}>
+                                    <Col xs={24} md={12} lg={8}>
+                                       <Form.Item label="Resume" required>
+                                          <Input name='resume' accept="application/pdf" onChange={handleDocumentChange} type='file' />
+                                       </Form.Item>
+                                    </Col>
+                                    <br />
+                                    <Form.Item>
+                                       <Button type='submit' variant='outline-warning'>
+                                          Submit
+                                       </Button>
+                                    </Form.Item>
+                                 </Row>
+                              </Form>
+                           </Modal> */
+
+/* Clean Property Interface Styles */
+.filter-section {
+   background: white;
+   padding: 20px;
+   border-radius: 8px;
+   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+   margin-bottom: 30px;
+}
+
+.filter-row {
+   display: flex;
+   gap: 15px;
+   align-items: center;
+   flex-wrap: wrap;
+}
+
+.filter-input {
+   flex: 1;
+   min-width: 200px;
+   padding: 10px 15px;
+   border: 1px solid #ddd;
+   border-radius: 6px;
+   font-size: 14px;
+   outline: none;
+   transition: border-color 0.3s ease;
+}
+
+.filter-input:focus {
+   border-color: #007bff;
+   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.filter-select {
+   padding: 10px 15px;
+   border: 1px solid #ddd;
+   border-radius: 6px;
+   font-size: 14px;
+   outline: none;
+   background: white;
+   cursor: pointer;
+   transition: border-color 0.3s ease;
+   min-width: 150px;
+}
+
+.filter-select:focus {
+   border-color: #007bff;
+   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.properties-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+   gap: 25px;
+   padding: 0 15px;
+}
+
+.property-card {
+   border: 1px solid #e0e0e0;
+   border-radius: 8px;
+   overflow: hidden;
+   transition: box-shadow 0.3s ease, transform 0.3s ease;
+   background: white;
+}
+
+.property-card:hover {
+   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+   transform: translateY(-2px);
+}
+
+.property-image {
+   width: 100%;
+   height: 200px;
+   overflow: hidden;
+   border-bottom: 1px solid #e0e0e0;
+}
+
+.property-image img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   transition: transform 0.3s ease;
+}
+
+.property-card:hover .property-image img {
+   transform: scale(1.05);
+}
+
+.property-details {
+   padding: 20px;
+}
+
+.property-info p {
+   margin: 8px 0;
+   font-size: 14px;
+   line-height: 1.4;
+   color: #333;
+}
+
+.property-info strong {
+   color: #555;
+   font-weight: 600;
+   min-width: 120px;
+   display: inline-block;
+}
+
+.property-action {
+   margin-top: 15px;
+   padding-top: 15px;
+   border-top: 1px solid #f0f0f0;
+}
+
+.property-action .btn {
+   border-radius: 6px;
+   font-weight: 500;
+   padding: 10px 20px;
+   transition: all 0.3s ease;
+}
+
+.property-action .btn-outline-info {
+   border-color: #007bff;
+   color: #007bff;
+}
+
+.property-action .btn-outline-info:hover {
+   background: #007bff;
+   border-color: #007bff;
+   color: white;
+}
+
+.not-available {
+   text-align: center;
+   padding: 10px;
+   background: #f8f9fa;
+   border-radius: 6px;
+   color: #6c757d;
+   font-weight: 500;
+   border: 1px solid #e9ecef;
+}
+
+.no-properties {
+   text-align: center;
+   padding: 60px 20px;
+   color: #6c757d;
+   font-size: 16px;
+}
+
+.property-details-modal {
+   margin: 20px 0;
+}
+
+.property-details-modal p {
+   margin: 10px 0;
+   font-size: 14px;
+}
+
+.booking-form {
+   margin-top: 30px;
+}
+
+.booking-form h5 {
+   margin-bottom: 20px;
+   color: #333;
+   font-weight: 600;
+}
+
+.booking-form .form-control {
+   border-radius: 6px;
+   border: 1px solid #ddd;
+   padding: 12px 15px;
+   font-size: 14px;
+   transition: border-color 0.3s ease;
+}
+
+.booking-form .form-control:focus {
+   border-color: #007bff;
+   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.booking-form .btn-info {
+   background: #007bff;
+   border-color: #007bff;
+   padding: 12px 20px;
+   font-weight: 500;
+   border-radius: 6px;
+   transition: background-color 0.3s ease;
+}
+
+.booking-form .btn-info:hover {
+   background: #0056b3;
+   border-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+   .filter-row {
+       flex-direction: column;
+       align-items: stretch;
+   }
+   
+   .filter-input,
+   .filter-select {
+       min-width: auto;
+       margin-bottom: 10px;
+   }
+   
+   .properties-grid {
+       grid-template-columns: 1fr;
+       padding: 0 10px;
+   }
+   
+   .property-info strong {
+       min-width: auto;
+       display: block;
+       margin-bottom: 5px;
+   }
+}
+
+/* Carousel Modal Styles */
+.modal-body .carousel {
+   margin-bottom: 20px;
+   border-radius: 8px;
+   overflow: hidden;
+}
+
+.modal-body .carousel-item img {
+   border-radius: 8px;
+   object-fit: cover;
+   height: 400px;
+}
